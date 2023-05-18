@@ -17,7 +17,12 @@ return {
     },
   },
   -- Set colorscheme to use
-  colorscheme = "dracula",
+  -- colorscheme = "dracula",
+  -- colorscheme = "catppuccin-frappe",
+  -- colorscheme = "monokai",
+  -- colorscheme = "vim-monokai-tasty",
+  colorscheme = "onedark_vivid",
+
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
@@ -63,6 +68,20 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
+    if not web_devicons_ok then
+	    return
+    end
+
+    local material_icon_ok, material_icon = pcall(require, "nvim-material-icon")
+    if not material_icon_ok then
+	    return
+    end
+
+    web_devicons.setup({
+	    override = material_icon.get_icons(),
+    })
+
     vim.o.termguicolors = true
     require('gitsigns').setup {
       signs = {

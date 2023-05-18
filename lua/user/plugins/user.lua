@@ -16,6 +16,36 @@ return {
   --   event = "VeryLazy"
   -- },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    event = "VeryLazy",
+  },
+  {
+    "sickill/vim-monokai",
+    event = "VeryLazy",
+  },
+  {
+    "patstockwell/vim-monokai-tasty",
+    event = "VeryLazy",
+  },
+  {
+    "joshdick/onedark.vim",
+    event = "VeryLazy",
+  },
+  {
+    "olimorris/onedarkpro.nvim",
+    event = "VeryLazy",
+  },
+  {
+    "tomasr/molokai",
+    event = "VeryLazy",
+  },
+  {
+    "morhetz/gruvbox",
+    event = "VeryLazy",
+  },
+  
+  {
     "folke/tokyonight.nvim",
     config = function()
       require("tokyonight").setup({
