@@ -11,5 +11,5 @@ return {
   { import = "astrocommunity.motion.vim-matchup" },
   -- { import = "astrocommunity.pack.tailwindcss" },
   -- { import = "astrocommunity.pack.typescript" },
-  -- { import = "astrocommunity.completion.copilot-lua-cmp" },
+  { import = "astrocommunity.completion.copilot-lua-cmp" },
 }
