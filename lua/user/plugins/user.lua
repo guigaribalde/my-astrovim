@@ -11,6 +11,11 @@ return {
     end,
     event = "User AstroFile"
   },
+  {
+    "stevearc/oil.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
   -- {
   --   "dracula/vim",
   --   event = "VeryLazy"

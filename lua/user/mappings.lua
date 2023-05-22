@@ -1,5 +1,6 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
+local oil = require("oil")
 
 return {
   -- first key is the mode
@@ -17,7 +18,7 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     ["<S-l>"] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end },
     ["<S-h>"] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end },
-    ["Y"] = { "yy" },
+    -- ["Y"] = { "yy" },
     ["<leader>x"] = { ":bp<bar>sp<bar>bn<bar>bd<CR>" },
     ["<leader>aa"] = mark.add_file,
     ["<leader>am"] = ui.toggle_quick_menu,
@@ -37,6 +38,7 @@ return {
     ["<C-L>"] = "<cmd>TmuxNavigateRight<CR>",
     ["<C-J>"] = "<cmd>TmuxNavigateDown<CR>",
     ["<C-K>"] = "<cmd>TmuxNavigateUp<CR>",
+    ["-"] = oil.open,
   },
   v = {
     ["J"] = { ":m '>+1<CR>gv=gv" },
