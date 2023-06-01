@@ -14,7 +14,21 @@ return {
   {
     "stevearc/oil.nvim",
     event = "VeryLazy",
-    opts = {},
+    enabled = true,
+    cmd = "Oil",
+    config = function()
+      require("oil").setup({
+        default_file_explorer = false,
+        buf_options = {
+          buflisted = true,
+          bufhidden = "delete",
+        },
+        skip_confirm_for_simple_edits = true,
+        view_options = {
+          show_hidden = true,
+        }
+      })
+    end,
   },
   -- {
   --   "dracula/vim",
