@@ -42,6 +42,8 @@ return {
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
+        "tsserver",
+        "typescript-language-server",
         -- "sumneko_lua",
       },
       timeout_ms = 1000, -- default format timeout
@@ -102,5 +104,6 @@ return {
       },
       current_line_blame_formatter = '<author> (<author_time:%R>) -  <summary>',
     }
+
   end,
 }
