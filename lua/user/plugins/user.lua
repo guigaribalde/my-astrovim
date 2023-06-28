@@ -1,5 +1,11 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = { "andymass/vim-matchup" },
+    opts = { matchup = { enable = true, disable = { "c", "lua" }, } },
+    event = "User AstroFile"
+  },
+  {
     "christoomey/vim-tmux-navigator",
     event = "VeryLazy",
   },
