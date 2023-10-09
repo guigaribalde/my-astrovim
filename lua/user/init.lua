@@ -17,6 +17,8 @@ return {
     },
   },
   colorscheme = "onedark_vivid",
+  -- colorscheme = "github_dark_colorblind",
+  -- colorscheme = "NeoSolarized",
 
   diagnostics = {
     virtual_text = true,
@@ -44,6 +46,29 @@ return {
     },
   },
   polish = function()
+    local cmp_nvim_lsp = require "cmp_nvim_lsp"
+
+    require("lspconfig").clangd.setup {
+      on_attach = on_attach,
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+      },
+    }
+
+    vim.notify = function(_,_,_)
+
+    end
+    local notify = require "notify"
+    local currNot = vim.notify
+    if currNot == notify then
+      vim.notify = function(_,_,_)
+
+      end
+      notify("All notifications disabled")
+    end
+
     local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
     if not web_devicons_ok then
 	    return
