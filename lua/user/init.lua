@@ -66,7 +66,6 @@ return {
       vim.notify = function(_,_,_)
 
       end
-      notify("All notifications disabled")
     end
 
     local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
@@ -84,6 +83,31 @@ return {
     })
 
     vim.o.termguicolors = true
+
+    local highlights = require("neo-tree.ui.highlights")
+
+    -- Telescope ignore large fileslocal previewers = require('telescope.previewers')
+    local previewers = require('telescope.previewers')
+    local new_maker = function(filepath, bufnr, opts)
+      opts = opts or {}
+
+      filepath = vim.fn.expand(filepath)
+      vim.loop.fs_stat(filepath, function(_, stat)
+        if not stat then return end
+        if stat.size > 100000 then
+          return 
+        else
+          previewers.buffer_previewer_maker(filepath, bufnr, opts)
+        end
+      end)
+    end
+
+
+    require('telescope').setup {
+      defaults = {
+        buffer_previewer_maker = new_maker,
+      }
+    }
 
     -- Git signs
     require('gitsigns').setup {

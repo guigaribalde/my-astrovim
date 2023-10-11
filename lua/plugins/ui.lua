@@ -15,6 +15,7 @@ return {
       woff2 = { icon = "", name = "WebOpenFontFormat2" },
       xz = { icon = "", name = "Xz" },
       zip = { icon = "", name = "Zip" },
+      ["hook.js", "hook.ts"] = { icon = "󰛢", name = "Hooks" },
     },
     config = require "plugins.configs.nvim-web-devicons",
   },

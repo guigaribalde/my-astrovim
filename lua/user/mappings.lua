@@ -30,7 +30,7 @@ return {
     ["K"] = "<cmd>Lspsaga hover_doc<CR>",
     ["gd"] = "<cmd>Lspsaga goto_definition<CR>",
     ["gD"] = "<cmd>Lspsaga peek_definition<CR>",
-    ["gi"] = "<cmd>Lspsaga lsp_finder<CR>",
+    ["gi"] = "<cmd>Lspsaga finder<CR>",
     ["<leader>r"] = "<cmd>Lspsaga rename<CR>",
     ["<leader>gp"] = "<cmd>Lspsaga diagnostic_jump_prev<CR>",
     ["<leader>gn"] = "<cmd>Lspsaga diagnostic_jump_next<CR>",
