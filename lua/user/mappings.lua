@@ -32,7 +32,7 @@ return {
     ["gD"] = "<cmd>Lspsaga peek_definition<CR>",
     ["gi"] = "<cmd>Lspsaga finder<CR>",
     ["<leader>r"] = "<cmd>Lspsaga rename<CR>",
-    ["<leader>gp"] = "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+    -- ["<leader>gp"] = "<cmd>Lspsaga diagnostic_jump_prev<CR>",
     ["<leader>gn"] = "<cmd>Lspsaga diagnostic_jump_next<CR>",
     ["<leader><S-k>"] = "<cmd>Lspsaga show_cursor_diagnostics<CR>",
     -- ["<C-H>"] = "<cmd>TmuxNavigateLeft<CR>",

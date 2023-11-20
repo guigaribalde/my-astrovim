@@ -76,13 +76,13 @@ return {
             enable = true,
             swap_next = {
               ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-              ["<leader>n:"] = "@property.outer", -- swap object property with next
-              ["<leader>nm"] = "@function.outer", -- swap function with next
+              ["<leader>n:"] = "@property.outer",  -- swap object property with next
+              ["<leader>nm"] = "@function.outer",  -- swap function with next
             },
             swap_previous = {
               ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-              ["<leader>p:"] = "@property.outer", -- swap object property with prev
-              ["<leader>pm"] = "@function.outer", -- swap function with previous
+              ["<leader>p:"] = "@property.outer",  -- swap object property with prev
+              ["<leader>pm"] = "@function.outer",  -- swap function with previous
             },
           },
           move = {
@@ -150,11 +150,11 @@ return {
 
       -- configure autopairs
       autopairs.setup({
-        check_ts = true, -- enable treesitter
+        check_ts = true,                      -- enable treesitter
         ts_config = {
-          lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+          lua = { "string" },                 -- don't add pairs in lua string treesitter nodes
           javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
-          java = false, -- don't check treesitter on java
+          java = false,                       -- don't check treesitter on java
         },
       })
 
@@ -200,7 +200,7 @@ return {
           -- adds current line nr in the url for normal mode
           add_current_line_on_normal_mode = true,
           -- callback for what to do with the url
-          action_callback = require"gitlinker.actions".copy_to_clipboard,
+          action_callback = require "gitlinker.actions".copy_to_clipboard,
           -- print the url after performing the action
           print_url = true,
           -- mapping to call url generation
@@ -246,8 +246,9 @@ return {
     "projekt0n/github-nvim-theme",
     event = "VeryLazy",
   },
-
-  { "nvim-lualine/lualine.nvim", event = "VeryLazy",
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     config = function()
       require('lualine').setup {
         options = {
@@ -305,7 +306,6 @@ return {
       Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
 
       Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
-
     end
   },
   {
@@ -319,9 +319,9 @@ return {
       require("tokyonight").setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
-        style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-        light_style = "storm", -- The theme is used when the background is set to light
-        transparent = false, -- Enable this to disable setting the background color
+        style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        light_style = "storm",  -- The theme is used when the background is set to light
+        transparent = false,    -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
         styles = {
           -- Style to be applied to different syntax groups
@@ -331,14 +331,14 @@ return {
           functions = {},
           variables = {},
           -- Background styles. Can be "dark", "transparent" or "normal"
-          sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
+          sidebars = "dark",              -- style for sidebars, see below
+          floats = "dark",                -- style for floating windows
         },
-        sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-        day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+        sidebars = { "qf", "help" },      -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+        day_brightness = 0.3,             -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-        dim_inactive = false, -- dims inactive windows
-        lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+        dim_inactive = false,             -- dims inactive windows
+        lualine_bold = false,             -- When `true`, section headers in the lualine theme will be bold
 
         --- You can override specific color groups to use other groups or a hex color
         --- function will be called with a ColorScheme table
@@ -383,61 +383,105 @@ return {
     end,
     event = "VeryLazy"
   },
+  -- {
+  --   "Mofiqul/dracula.nvim",
+  --   config = function()
+  --     local dracula = require("dracula")
+  --     dracula.setup({
+  --       -- customize dracula color palette
+  --       colors = {
+  --         bg = "#282A36",
+  --         fg = "#F8F8F2",
+  --         selection = "#44475A",
+  --         comment = "#6272A4",
+  --         red = "#FF5555",
+  --         orange = "#FFB86C",
+  --         yellow = "#F1FA8C",
+  --         green = "#50fa7b",
+  --         purple = "#BD93F9",
+  --         cyan = "#8BE9FD",
+  --         pink = "#FF79C6",
+  --         bright_red = "#FF6E6E",
+  --         bright_green = "#69FF94",
+  --         bright_yellow = "#FFFFA5",
+  --         bright_blue = "#D6ACFF",
+  --         bright_magenta = "#FF92DF",
+  --         bright_cyan = "#A4FFFF",
+  --         bright_white = "#FFFFFF",
+  --         menu = "#21222C",
+  --         visual = "#3E4452",
+  --         gutter_fg = "#4B5263",
+  --         nontext = "#3B4048",
+  --       },
+  --       -- show the '~' characters after the end of buffers
+  --       show_end_of_buffer = true, -- default false
+  --       -- use transparent background
+  --       -- transparent_bg = true, -- default false
+  --       -- set custom lualine background color
+  --       lualine_bg_color = "#44475a", -- default nil
+  --       -- set italic comment
+  --       italic_comment = true, -- default false
+  --       -- overrides the default highlights see `:h synIDattr`
+  --       -- overrides = {
+  --       --   -- Examples
+  --       --   -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
+  --       --   NvimTreeIndentMarker = {
+  --       --     bg = "#21222C",
+  --       --   }, -- link to NonText highlight
+  --       --   NeoTreeNormal = {
+  --       --     bg = "#21222C",
+  --       --   },
+  --       --   NeoTreeNormalNC = {
+  --       --     bg = "#21222C",
+  --       --   },
+  --       --   -- Nothing = {} -- clear highlight of Nothing
+  --       -- },
+  --     })
+  --   end,
+  --   event = "VeryLazy"
+  -- },
   {
-    "Mofiqul/dracula.nvim",
-    config = function()
-      local dracula = require("dracula")
-      dracula.setup({
-        -- customize dracula color palette
-        colors = {
-          bg = "#282A36",
-          fg = "#F8F8F2",
-          selection = "#44475A",
-          comment = "#6272A4",
-          red = "#FF5555",
-          orange = "#FFB86C",
-          yellow = "#F1FA8C",
-          green = "#50fa7b",
-          purple = "#BD93F9",
-          cyan = "#8BE9FD",
-          pink = "#FF79C6",
-          bright_red = "#FF6E6E",
-          bright_green = "#69FF94",
-          bright_yellow = "#FFFFA5",
-          bright_blue = "#D6ACFF",
-          bright_magenta = "#FF92DF",
-          bright_cyan = "#A4FFFF",
-          bright_white = "#FFFFFF",
-          menu = "#21222C",
-          visual = "#3E4452",
-          gutter_fg = "#4B5263",
-          nontext = "#3B4048",
-        },
-        -- show the '~' characters after the end of buffers
-        show_end_of_buffer = true, -- default false
-        -- use transparent background
-        -- transparent_bg = true, -- default false
-        -- set custom lualine background color
-        lualine_bg_color = "#44475a", -- default nil
-        -- set italic comment
-        italic_comment = true, -- default false
-        -- overrides the default highlights see `:h synIDattr`
-        -- overrides = {
-        --   -- Examples
-        --   -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
-        --   NvimTreeIndentMarker = { 
-        --     bg = "#21222C",
-        --   }, -- link to NonText highlight
-        --   NeoTreeNormal = {
-        --     bg = "#21222C",
-        --   },
-        --   NeoTreeNormalNC = {
-        --     bg = "#21222C",
-        --   },
-        --   -- Nothing = {} -- clear highlight of Nothing
-        -- },
+    "maxmx03/dracula.nvim",
+    -- opts = {},
+    event = "VeryLazy"
+  },
+  {
+    "ggandor/leap.nvim",
+    keys = {
+      { "s",  "<Plug>(leap-forward-to)",    mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S",  "<Plug>(leap-backward-to)",   mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "x",  "<Plug>(leap-forward-till)",  mode = { "x", "o" },      desc = "Leap forward till" },
+      { "X",  "<Plug>(leap-backward-till)", mode = { "x", "o" },      desc = "Leap backward till" },
+      { "gs", "<Plug>(leap-from-window)",   mode = { "n", "x", "o" }, desc = "Leap from window" },
+    },
+    opts = {},
+    init = function() -- https://github.com/ggandor/leap.nvim/issues/70#issuecomment-1521177534
+      vim.api.nvim_create_autocmd("User", {
+        callback = function()
+          vim.cmd.hi("Cursor", "blend=100")
+          vim.opt.guicursor:append { "a:Cursor/lCursor" }
+        end,
+        pattern = "LeapEnter",
+      })
+      vim.api.nvim_create_autocmd("User", {
+        callback = function()
+          vim.cmd.hi("Cursor", "blend=0")
+          vim.opt.guicursor:remove { "a:Cursor/lCursor" }
+        end,
+        pattern = "LeapLeave",
       })
     end,
+    dependencies = {
+      "tpope/vim-repeat",
+    },
+  },
+  {
+    "catppuccin/nvim",
+    optional = true,
+    opts = { integrations = { leap = true } },
+  },
+  {
+    "catppuccin/nvim",
     event = "VeryLazy"
   },
   {
@@ -470,6 +514,22 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
   {
+    "akinsho/git-conflict.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require('git-conflict').setup({
+        default_mappings = {
+          ours = 'o',
+          theirs = 't',
+          none = '0',
+          both = 'b',
+          next = 'n',
+          prev = 'p',
+        }
+      })
+    end,
+  },
+  {
     -- "glepnir/lspsaga.nvim",
     "nvimdev/lspsaga.nvim",
     branch = "main",
@@ -483,7 +543,7 @@ return {
         ui = {
           code_action = '',
           enable = flase,
-          lines = {'┗', '┣', '┃', '', '┏'},
+          lines = { '┗', '┣', '┃', '', '┏' },
           expand = '',
           collapse = ''
         }

@@ -16,7 +16,9 @@ return {
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
     },
   },
-  colorscheme = "onedark_vivid",
+  -- colorscheme = "onedark_vivid",
+  colorscheme = "dracula",
+  -- colorscheme = "tokyonight-storm",
   -- colorscheme = "github_dark_colorblind",
   -- colorscheme = "NeoSolarized",
 
@@ -28,9 +30,9 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
       },
-      disabled = { -- disable formatting capabilities for the listed language servers
+      disabled = {      -- disable formatting capabilities for the listed language servers
         "tsserver",
         "typescript-language-server",
       },
@@ -57,29 +59,29 @@ return {
       },
     }
 
-    vim.notify = function(_,_,_)
+    vim.notify = function(_, _, _)
 
     end
     local notify = require "notify"
     local currNot = vim.notify
     if currNot == notify then
-      vim.notify = function(_,_,_)
+      vim.notify = function(_, _, _)
 
       end
     end
 
     local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
     if not web_devicons_ok then
-	    return
+      return
     end
 
     local material_icon_ok, material_icon = pcall(require, "nvim-material-icon")
     if not material_icon_ok then
-	    return
+      return
     end
 
     web_devicons.setup({
-	    override = material_icon.get_icons(),
+      override = material_icon.get_icons(),
     })
 
     vim.o.termguicolors = true
@@ -95,7 +97,7 @@ return {
       vim.loop.fs_stat(filepath, function(_, stat)
         if not stat then return end
         if stat.size > 100000 then
-          return 
+          return
         else
           previewers.buffer_previewer_maker(filepath, bufnr, opts)
         end

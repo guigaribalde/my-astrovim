@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = { 
+  dependencies = {
     "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -24,7 +24,7 @@ return {
   build = ":TSUpdate",
   opts = {
     highlight = { enable = true },
-    incremental_selection = { 
+    incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = "<C-space>",

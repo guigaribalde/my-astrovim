@@ -164,19 +164,19 @@ M.on_attach = function(client, bufnr)
     }
   end
 
-  if capabilities.declarationProvider then
-    lsp_mappings.n["ggD"] = {
-      function() vim.lsp.buf.declaration() end,
-      desc = "Declaration of current symbol",
-    }
-  end
-
-  if capabilities.definitionProvider then
-    lsp_mappings.n["ggd"] = {
-      function() vim.lsp.buf.definition() end,
-      desc = "Show the definition of current symbol",
-    }
-  end
+  -- if capabilities.declarationProvider then
+  --   lsp_mappings.n["ggD"] = {
+  --     function() vim.lsp.buf.declaration() end,
+  --     desc = "Declaration of current symbol",
+  --   }
+  -- end
+  --
+  -- if capabilities.definitionProvider then
+  --   lsp_mappings.n["ggd"] = {
+  --     function() vim.lsp.buf.definition() end,
+  --     desc = "Show the definition of current symbol",
+  --   }
+  -- end
 
   if capabilities.documentFormattingProvider and not tbl_contains(M.formatting.disabled, client.name) then
     lsp_mappings.n["<leader>lf"] = {
@@ -194,9 +194,9 @@ M.on_attach = function(client, bufnr)
     local autoformat = M.formatting.format_on_save
     local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
     if
-      autoformat.enabled
-      and (tbl_isempty(autoformat.allow_filetypes or {}) or tbl_contains(autoformat.allow_filetypes, filetype))
-      and (tbl_isempty(autoformat.ignore_filetypes or {}) or not tbl_contains(autoformat.ignore_filetypes, filetype))
+        autoformat.enabled
+        and (tbl_isempty(autoformat.allow_filetypes or {}) or tbl_contains(autoformat.allow_filetypes, filetype))
+        and (tbl_isempty(autoformat.ignore_filetypes or {}) or not tbl_contains(autoformat.ignore_filetypes, filetype))
     then
       add_buffer_autocmd("lsp_auto_format", bufnr, {
         events = "BufWritePre",
@@ -332,7 +332,7 @@ M.capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 M.capabilities.textDocument.completion.completionItem.resolveSupport =
-  { properties = { "documentation", "detail", "additionalTextEdits" } }
+{ properties = { "documentation", "detail", "additionalTextEdits" } }
 M.capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
 M.capabilities = user_opts("lsp.capabilities", M.capabilities)
 M.flags = user_opts "lsp.flags"
