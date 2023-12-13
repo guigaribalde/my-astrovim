@@ -383,68 +383,55 @@ return {
     end,
     event = "VeryLazy"
   },
-  -- {
-  --   "Mofiqul/dracula.nvim",
-  --   config = function()
-  --     local dracula = require("dracula")
-  --     dracula.setup({
-  --       -- customize dracula color palette
-  --       colors = {
-  --         bg = "#282A36",
-  --         fg = "#F8F8F2",
-  --         selection = "#44475A",
-  --         comment = "#6272A4",
-  --         red = "#FF5555",
-  --         orange = "#FFB86C",
-  --         yellow = "#F1FA8C",
-  --         green = "#50fa7b",
-  --         purple = "#BD93F9",
-  --         cyan = "#8BE9FD",
-  --         pink = "#FF79C6",
-  --         bright_red = "#FF6E6E",
-  --         bright_green = "#69FF94",
-  --         bright_yellow = "#FFFFA5",
-  --         bright_blue = "#D6ACFF",
-  --         bright_magenta = "#FF92DF",
-  --         bright_cyan = "#A4FFFF",
-  --         bright_white = "#FFFFFF",
-  --         menu = "#21222C",
-  --         visual = "#3E4452",
-  --         gutter_fg = "#4B5263",
-  --         nontext = "#3B4048",
-  --       },
-  --       -- show the '~' characters after the end of buffers
-  --       show_end_of_buffer = true, -- default false
-  --       -- use transparent background
-  --       -- transparent_bg = true, -- default false
-  --       -- set custom lualine background color
-  --       lualine_bg_color = "#44475a", -- default nil
-  --       -- set italic comment
-  --       italic_comment = true, -- default false
-  --       -- overrides the default highlights see `:h synIDattr`
-  --       -- overrides = {
-  --       --   -- Examples
-  --       --   -- NonText = { fg = dracula.colors().white }, -- set NonText fg to white
-  --       --   NvimTreeIndentMarker = {
-  --       --     bg = "#21222C",
-  --       --   }, -- link to NonText highlight
-  --       --   NeoTreeNormal = {
-  --       --     bg = "#21222C",
-  --       --   },
-  --       --   NeoTreeNormalNC = {
-  --       --     bg = "#21222C",
-  --       --   },
-  --       --   -- Nothing = {} -- clear highlight of Nothing
-  --       -- },
-  --     })
-  --   end,
-  --   event = "VeryLazy"
-  -- },
   {
-    "maxmx03/dracula.nvim",
-    -- opts = {},
+    "Mofiqul/dracula.nvim",
     event = "VeryLazy"
   },
+  {
+    "maxmx03/fluoromachine.nvim",
+    config = function()
+      local fluoromachine = require('fluoromachine')
+      fluoromachine.setup({
+        theme = 'retrowave', -- fluoromachine, retrowave, delta
+      })
+    end,
+    event = "VeryLazy"
+  },
+  {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+  },
+  -- {
+  --   "lvimuser/lsp-inlayhints.nvim",
+  --   init = function()
+  --     vim.api.nvim_create_autocmd("LspAttach", {
+  --       group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
+  --       callback = function(args)
+  --         if not (args.data and args.data.client_id) then return end
+  --         local client = vim.lsp.get_client_by_id(args.data.client_id)
+  --         if client.server_capabilities.inlayHintProvider then
+  --           local inlayhints = require "lsp-inlayhints"
+  --           inlayhints.on_attach(client, args.buf)
+  --           require("astronvim.utils").set_mappings({
+  --             n = {
+  --               ["<leader>uH"] = { inlayhints.toggle, desc = "Toggle inlay hints" },
+  --             },
+  --           }, { buffer = args.buf })
+  --         end
+  --       end,
+  --     })
+  --   end,
+  --   opts = {},
+  -- },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   dependencies = { "andymass/vim-matchup" },
+  --   init = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup", fullwidth = 1, highlight = "Normal", syntax_hl = 1 }
+  --   end,
+  --   opts = { matchup = { enable = true } },
+  -- },
   {
     "ggandor/leap.nvim",
     keys = {
@@ -495,6 +482,10 @@ return {
     event = "VeryLazy"
   },
   {
+    "lunarvim/horizon.nvim",
+    event = "VeryLazy"
+  },
+  {
     "github/copilot.vim",
     event = "VeryLazy"
   },
@@ -542,7 +533,7 @@ return {
         },
         ui = {
           code_action = '',
-          enable = flase,
+          enable = false,
           lines = { '┗', '┣', '┃', '', '┏' },
           expand = '',
           collapse = ''
